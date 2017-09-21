@@ -1,0 +1,73 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.hradecek.cdi</groupId>
+  <artifactId>tomcat-cdi</artifactId>
+  <packaging>war</packaging>
+  <version>1.0.0</version>
+
+  <name>tomcat-cdi</name>
+  <url>https://github.com/hradecek/tomcat-cdi</url>
+
+  <properties>
+    <version.java>1.8</version.java>
+
+    <!-- APIs -->
+    <version.cdi.api>1.2</version.cdi.api>
+    <version.javaee.web.api>7.0</version.javaee.web.api>
+
+    <!-- Weld -->
+    <version.weld.servlet>2.4.3.Final</version.weld.servlet>
+
+    <!-- Maven plugins -->
+    <version.maven.war.plugin>3.1.0</version.maven.war.plugin>
+    <version.maven.compiler.plugin>3.7.0</version.maven.compiler.plugin>
+  </properties>
+
+  <build>
+    <finalName>${project.name}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.maven.compiler.plugin}</version>
+        <configuration>
+          <source>${version.java}</source>
+          <target>${version.java}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>${version.maven.war.plugin}</version>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <!-- Java EE API -->
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>${version.javaee.web.api}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- CDI API -->
+    <dependency>
+      <groupId>javax.enterprise</groupId>
+      <artifactId>cdi-api</artifactId>
+      <version>${version.cdi.api}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Weld Implementation -->
+    <dependency>
+      <groupId>org.jboss.weld.servlet</groupId>
+      <artifactId>weld-servlet</artifactId>
+      <version>${version.weld.servlet}</version>
+      <scope>runtime</scope>
+    </dependency>
+  </dependencies>
+</project>
